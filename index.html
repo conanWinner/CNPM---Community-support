@@ -10,6 +10,7 @@
 
 	<script src="./libs/jquery/jquery-3.6.0.min.js"></script>
 	<script type="module" src="./common/checkLogin.js"></script>
+	<script src="./wp-content/home/handleAfterLogin.js"></script>
 
 	<script>(function (html) { html.className = html.className.replace(/\bno-js\b/, 'js') })(document.documentElement);</script>
 	<meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
@@ -1016,7 +1017,7 @@
 									</div>
 								</li> <!-- Mobile Right Elements -->
 								<li class="html custom html_topbar_left">
-								<li class="html custom html_topbar_left"><a href="./login.html" class="btn-sign-in">
+								<li class="html custom html_topbar_left"><a href="./login.html" class="btn-sign-in" id="desktop-login">
 										Đăng nhập </a></li>
 								</li>
 
@@ -1041,6 +1042,7 @@
 								</li>
 							</ul>
 						</div>
+
 						<style>
 							/* Ban đầu ẩn hộp thông báo */
 							.header-notify {
@@ -1070,8 +1072,8 @@
 
 						<!-- Mobile Right Elements -->
 						<div class="flex-col show-for-medium flex-right">
-							<ul class="mobile-nav nav nav-right ">
-								<li class="html custom html_topbar_left"><a href="./login.html" class="btn-sign-in">
+							<ul class="mobile-nav nav nav-right">
+								<li class="html custom html_topbar_left"><a href="./login.html" class="btn-sign-in" id="mobile-login">
 										Đăng nhập </a></li>
 
 							</ul>

@@ -1,4 +1,4 @@
-import { postUser, login } from "../../common/common.js";
+import { postUser, login, ADMIN_ROLE, USER_ROLE } from "../../common/common.js";
 
 $(document).ready(function () {
   //============= Phone ===============
@@ -82,7 +82,13 @@ $(document).ready(function () {
       url: postUser,
       type: "POST",
       contentType: "application/json",
-      data: JSON.stringify({ name, phone, password, cccd, address }),
+      data: JSON.stringify({
+        phoneNumber: phoneNumber, 
+        password: password, 
+        fullName: name, 
+        cccd: cccd, 
+        address: address,
+      }),
       success: function (response) {
         console.log(response);
         alert("Đăng ký thành công!");
@@ -99,7 +105,7 @@ $(document).ready(function () {
     e.preventDefault();
     const phoneNumber = $("#login-phone").val();
     const password = $("#login-password").val();
-    const whoAreYou = "user";
+    const whoAreYou = USER_ROLE;
 
     $.ajax({
       url: login,
@@ -108,7 +114,7 @@ $(document).ready(function () {
       data: JSON.stringify({ phoneNumber, password, whoAreYou }),
       success: function (response) {
         const data = response.result;
-
+        const userData = data.result;
         console.log(JSON.stringify(data, null, 2));
         // for (const key in response) {
         //   if (response.hasOwnProperty(key)) {
@@ -116,13 +122,18 @@ $(document).ready(function () {
         //   }
         // }
 
-        window.location.href = "http://127.0.0.1:5544/index.html";
+        window.location.href =
+          "http://127.0.0.1:5500/Community-Support-Project/index.html";
+
+        var fullName = userData.fullName;
+        localStorage.setItem("fullName", fullName);
         localStorage.setItem("phoneNumber", phoneNumber);
+        localStorage.setItem("roleName", whoAreYou);
         alert("Đăng nhập thành công!");
       },
       error: function (error) {
         console.log(error);
-        console.log(phone + " " + password + " " + whoAreYou);
+        console.log(phoneNumber + " " + password + " " + whoAreYou);
         alert("Sai thông tin đăng nhập!");
       },
     });
