@@ -920,6 +920,8 @@
 			}
 		}
 	</style>
+	<script src="ckeditor/ckeditor.js"></script>
+	
 </head>
 
 <body
@@ -1333,43 +1335,19 @@
 
 				<section class="section plh1" id="section_684297679">
 					<div class="bg section-bg fill bg-fill  bg-loaded">
-
-
-
-
-
 					</div>
 
-
-
 					<div class="section-content relative">
-
-
 						<div class="row" id="row-1764161551">
-
-
 							<div id="col-1973656258" class="col small-12 large-12">
 								<div class="col-inner text-center">
-
-
-
 									<div class="titletsl">
-
-
 										<h2>thông tin liên hệ</h2>
 									</div>
-
-
 								</div>
 							</div>
-
-
-
 							<div id="col-1001917726" class="col small-12 large-12">
 								<div class="col-inner text-center">
-
-
-
 									<div class="titletsl">
 										<!-- <select name="" id="select">
 											<option value="lh1">Phản hồi về chương trình</option>
@@ -1397,41 +1375,46 @@
 													</div>
 													<div class="d-flex">
 														<p>
+															<!-- Họ và tên -->
 															<span class="wpcf7-form-control-wrap" data-name="hovaten">
 																<input size="40" class="wpcf7-form-control wpcf7-text"
 																	aria-invalid="false" placeholder="Họ và tên"
-																	value="" type="text" name="hovaten" />
+																	value="" type="text" name="fullName" />
 															</span>
+															<!-- Số điện thoại -->
 															<span class="wpcf7-form-control-wrap"
 																data-name="Phone_form1">
 																<input size="40"
 																	class="wpcf7-form-control wpcf7-tel wpcf7-validates-as-required wpcf7-text wpcf7-validates-as-tel"
 																	aria-required="true" aria-invalid="false"
 																	placeholder="Số điện thoại" value="" type="tel"
-																	name="Phone_form1" />
+																	name="phoneNumber" />
 															</span>
 														</p>
 													</div>
 
 													<div class="d-flex">
 														<p>
+															<!-- Target -->
 															<span class="wpcf7-form-control-wrap" data-name="email">
 																<input size="40"
 																	class="wpcf7-form-control wpcf7-email wpcf7-text wpcf7-validates-as-email"
-																	aria-invalid="false" placeholder="Email" value=""
-																	type="email" name="email" />
+																	aria-invalid="false" placeholder="Chỉ tiêu" value=""
+																	type="email" name="target" />
 															</span>
+															<!-- Deadline -->
 															<span class="wpcf7-form-control-wrap"
 																data-name="thoigianlienlac">
 																<input
 																	class="wpcf7-form-control wpcf7-date wpcf7-validates-as-date"
 																	aria-invalid="false"
 																	placeholder="Thời gian liên lạc phù hợp" value=""
-																	type="date" name="thoigianlienlac" />
+																	type="date" name="deadline" />
 															</span>
 														</p>
 													</div>
 
+													<!-- Address -->
 													<div
 														class="d-flex justify-content-between align-items-center flex-wrap">
 														<span class="wpcf7-form-control-wrap">
@@ -1453,7 +1436,7 @@
 																<input size="40" class="wpcf7-form-control wpcf7-text"
 																	aria-invalid="false"
 																	placeholder="Địa chỉ cụ thể, số nhà, đường ..."
-																	value="" type="text" name="hovaten" />
+																	value="" type="text" name="addressDescription" />
 															</span>
 														</p>
 													</div>
@@ -1539,15 +1522,20 @@
 												</form>
 											</div>
 
+											<!-- Description -->
 											<p>
 												<span class="wpcf7-form-control-wrap" data-name="loinhan">
-													<textarea cols="40" rows="10"
+													<textarea cols="40" rows="1000"
 														class="wpcf7-form-control wpcf7-textarea" aria-invalid="false"
-														placeholder="Lời nhắn" name="loinhan"></textarea>
+														placeholder="Lời nhắn" name="description"></textarea>
 												</span>
 												<input class="wpcf7-form-control wpcf7-submit has-spinner" type="submit"
 													value="Gửi" />
 											</p>
+											<script>
+												CKEDITOR.replace("description")
+											</script>
+											
 										</div>
 
 									</div>
