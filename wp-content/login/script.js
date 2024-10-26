@@ -19,9 +19,13 @@ $(document).ready(function () {
   // Chuyển sang form đăng ký người dùng
   $("#switch-to-register, #switch-to-user").click(function () {
     $("#register-organization").css("opacity", "0");
+    $("#register-organization").css("z-index", "-1");
+
+    $("#register-user").css("opacity", "1");
+    $("#register-user").css("z-index", "1");
+
     $(".sign-up-container").removeClass("hidden");
     $(".sign-in-container").css("left", "-100%");
-    $("#register-user").css("opacity", "1");
     $(".sign-up-container").css("left", "0");
     $(".overlay-container").addClass("active");
   });
@@ -29,8 +33,12 @@ $(document).ready(function () {
   // Chuyển sang form đăng ký tổ chức
   $("#switch-to-org").click(function () {
     $("#register-organization").css("opacity", "1");
-    $(".sign-in-container").css("left", "-100%");
+    $("#register-organization").css("z-index", "1");
+
     $("#register-user").css("opacity", "0");
+    $("#register-user").css("z-index", "-1");
+
+    $(".sign-in-container").css("left", "-100%");
     $(".sign-up-container").css("left", "0");
     $(".overlay-container").addClass("active");
   });
@@ -38,7 +46,10 @@ $(document).ready(function () {
   // Quay lại đăng ký người dùng từ đăng ký tổ chức
   $("#switch-back-to-user").click(function () {
     $("#register-organization").css("opacity", "0");
+    $("#register-organization").css("z-index", "-1");
+
     $("#register-user").css("opacity", "1");
+    $("#register-user").css("z-index", "1");
   });
 
   // ============ Set role when click radio button ================
@@ -133,6 +144,11 @@ $(document).ready(function () {
       success: function (response) {
         console.log(response);
         alert("Đăng ký thành công!, vui lòng đăng nhập.");
+        $("#user-phone").val("");
+        $("#user-password").val("");
+        $("#user-name").val("");
+        $("#user-cccd").val("");
+        $("#user-address").val("");
       },
       error: function (error) {
         console.log(error);
@@ -167,8 +183,6 @@ $(document).ready(function () {
         //     console.log(`${key}: ${JSON.stringify(response[key])}`);
         //   }
         // }
-        window.location.href =
-          "http://127.0.0.1:5500/Community-Support-Project/index.html";
 
         var fullName = userData.fullName;
         localStorage.setItem("fullName", fullName);
@@ -185,74 +199,67 @@ $(document).ready(function () {
       },
     });
   });
-});
 
-//===============  Register ORG===============
+  //===============  Register ORG===============
 
-// {
-//   "phoneNumber": "",
-//   "password": "",
-//   "organizationName": "",
-//   "representativeName": "",
-//   "cccd": "",
-//   "address": "",
-//   "description": ""
-// }
+  // {
+  //   "phoneNumber": "",
+  //   "password": "",
+  //   "organizationName": "",
+  //   "representativeName": "",
+  //   "cccd": "",
+  //   "address": "",
+  //   "description": ""
+  // }
 
-$("#register-organization-form").submit(function (e) {
-  e.preventDefault();
-  const phoneNumber = $("#org-phone").val();
-  const password = $("#org-password").val();
-  const organizationName = $("#org-representation_name").val();
-  const representativeName = $("#org-name").val();
-  const cccd = $("#org-cccd").val();
-  const address = $("#org-address").val();
-  const description = $("#org-description").val();
+  $("#register-organization-form").submit(function (e) {
+    e.preventDefault();
+    const phoneNumber = $("#org-phone").val();
+    const password = $("#org-password").val();
+    const organizationName = $("#org-representation_name").val();
+    const representativeName = $("#org-name").val();
+    const cccd = $("#org-cccd").val();
+    const address = $("#org-address").val();
+    const description = $("#org-description").val();
 
-  console.log(
-    phoneNumber,
-    password,
-    organizationName,
-    representativeName,
-    cccd,
-    address,
-    description
-  );
-
-  $.ajax({
-    url: postORG,
-    type: "POST",
-    contentType: "application/json",
-    data: JSON.stringify({
+    console.log(
       phoneNumber,
       password,
       organizationName,
       representativeName,
       cccd,
       address,
-      description,
-    }),
-    success: function (response) {
-      console.log(response);
-      alert("Đăng ký thành công!, vui lòng đăng nhập.");
-      $("#org-phone").val("");
-      $("#org-password").val("");
-      $("#org-representation_name").val("");
-      $("#org-name").val("");
-      $("#org-cccd").val("");
-      $("#org-address").val("");
-      $("#org-description").val("");
-    },
-    error: function (error) {
-      console.log(error);
-      alert("Có lỗi xảy ra khi đăng ký!");
-      $("#org-phone").val("");
-      $("#org-password").val("");
-      $("#org-representation_name").val("");
-      $("#org-name").val("");
-      $("#org-cccd").val("");
-      $("#org-address").val("");
-      $("#org-description").val("");
-    },
+      description
+    );
+
+    $.ajax({
+      url: postORG,
+      type: "POST",
+      contentType: "application/json",
+      data: JSON.stringify({
+        phoneNumber,
+        password,
+        organizationName,
+        representativeName,
+        cccd,
+        address,
+        description,
+      }),
+      success: function (response) {
+        console.log(response);
+        alert("Đăng ký thành công!, vui lòng đăng nhập.");
+        $("#org-phone").val("");
+        $("#org-password").val("");
+        $("#org-representation_name").val("");
+        $("#org-name").val("");
+        $("#org-cccd").val("");
+        $("#org-address").val("");
+        $("#org-description").val("");
+      },
+      error: function (error) {
+        console.log(error);
+        alert("Có lỗi xảy ra khi đăng ký!");
+      },
+    });
   });
 });

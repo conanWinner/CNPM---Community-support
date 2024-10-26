@@ -1,3 +1,5 @@
+import { URLIndex } from "./common";
+
 function login() {
   const _phoneNumber = localStorage.getItem("phoneNumber");
   console.log(_phoneNumber);
@@ -6,7 +8,6 @@ function login() {
 
 function logout() {
   localStorage.removeItem("phoneNumber");
-  window.location.href = "";
 }
 
 $(document).ready(function () {
@@ -14,4 +15,12 @@ $(document).ready(function () {
     $(".icon_user").css("display", "inline");
     $(".btn-sign-in").css("display", "none");
   }
+
+  // ==================== btn logout =================
+  $("#btn-log-out").on("click", function () {
+    $(".icon_user").css("display", "none");
+    $(".btn-sign-in").css("display", "inline");
+    logout();
+    window.location.href = URLIndex;
+  });
 });
