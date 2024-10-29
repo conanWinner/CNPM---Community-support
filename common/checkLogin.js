@@ -1,8 +1,10 @@
-import { URLIndex } from "./common";
+import { URLIndex } from "./common.js";
 
 function login() {
   const _phoneNumber = localStorage.getItem("phoneNumber");
-  console.log(_phoneNumber);
+  const _iduser = localStorage.getItem("iduser");
+
+  console.log(_iduser + " " + _phoneNumber);
   return _phoneNumber ? _phoneNumber : null;
 }
 
