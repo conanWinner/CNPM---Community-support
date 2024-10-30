@@ -1,5 +1,5 @@
-const URL = "http://localhost:8080";
-// const URL = "https://community-support-project.onrender.com";
+// const URL = "http://localhost:8080";
+const URL = "https://community-support-project.onrender.com";
 
 // =============== USER ====================
 export const getUsers = URL + "/api/users"; // Get all users
