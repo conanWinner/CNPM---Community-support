@@ -249,6 +249,7 @@ $(document).ready(function () {
         const data = response.result;
         const userData = data.result;
 
+        console.log(userData);
         console.log(JSON.stringify(data, null, 2));
 
         var fullName = userData.fullName;
@@ -264,9 +265,6 @@ $(document).ready(function () {
       },
       error: function (error) {
         console.log(error);
-        console.log(
-          iduser + " " + phoneNumber + " " + password + " " + whoAreYou
-        );
         alert("Sai thông tin đăng nhập!");
       },
     });
