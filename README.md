@@ -7,3 +7,7 @@ Link front-end: [https://community-support.vercel.app/](https://community-suppor
 # Saving with localstorage
 
 ![alt text](image.png)
+
+# Changing the link URL
+
+![alt text](image-1.png)
