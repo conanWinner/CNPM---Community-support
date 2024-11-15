@@ -159,7 +159,7 @@ $(document).ready(function () {
 
 						// Tạo thẻ div để chứa ảnh xem trước và nút xóa
 						const imgContainer = $(`
-                      <div style="padding: 2px 8px; position: relative;">
+                      <div class="image-upload" style="padding: 2px 8px; position: relative;">
                           <span class="remove-image" style="position: absolute; top: 15%; right: 10%; color: #000; font-weight: 700; cursor: pointer;">X</span>
                           <img src="${imageUrl}" alt="Ảnh xem trước" style="width: 100px; height: 100px; border-radius: 2px;">
                       </div>
@@ -183,5 +183,126 @@ $(document).ready(function () {
 	// Xóa ảnh khi nhấn nút X
 	$(document).on('click', '.remove-image', function () {
 		$(this).parent().remove();
+	});
+});
+
+$(document).ready(function () {
+	$('input.wpcf7-submit').on('click', function (e) {
+		e.preventDefault(); // Ngăn chặn hành động mặc định của form
+		// Lấy giá trị của input họ và tên
+		const fullName = $('input[name="fullName"]').val().trim();
+
+		// Kiểm tra nếu input rỗng
+		if (!fullName) {
+			alert('Vui lòng nhập họ và tên!');
+			return;
+		}
+
+		// Lấy giá trị của input số điện thoại
+		const phoneNumber = $('input[name="phoneNumber"]').val().trim();
+
+		// Kiểm tra nếu số điện thoại rỗng
+		if (!phoneNumber) {
+			alert('Vui lòng nhập số điện thoại!');
+			return;
+		}
+
+		let regex = /^(0|\+84)[0-9]{9}$/;
+		if (!regex.test(phoneNumber)) {
+			alert('Số điện thoại không hợp lệ!');
+			return;
+		}
+
+		const target = Number($('input[name="target"]').val().trim()); // Chuyển sang số (có thể nguyên hoặc thực)
+
+		// Kiểm tra nếu trường "target" rỗng
+		if (!target) {
+			alert('Vui lòng nhập chỉ tiêu!');
+			return;
+		}
+
+		// Kiểm tra xem giá trị có phải là số hợp lệ
+		if (isNaN(target) || Number(target) <= 0) {
+			alert('Vui lòng nhập một số hợp lệ lớn hơn 0!');
+			return;
+		}
+
+		// Lấy giá trị từ input "deadline"
+		const deadline = $('input[name="deadline"]').val().trim();
+
+		// Kiểm tra nếu giá trị rỗng
+		if (!deadline) {
+			alert('Vui lòng chọn thời gian liên lạc!');
+			return;
+		}
+
+		if (deadline < new Date().toISOString().split('T')[0]) {
+			alert('Thời gian liên lạc không hợp lệ!');
+			return;
+		}
+
+		var provinceText = $('#select2-Province-container').text().trim();
+		if (provinceText === 'Chọn Tỉnh/Thành Phố') {
+			alert('Vui lòng chọn Tỉnh/Thành Phố!');
+			return;
+		}
+		provinceText = provinceText.slice(1);
+
+		var districtText = $('#select2-District-container').text().trim();
+		if (districtText === 'Chọn Quận/Huyện') {
+			alert('Vui lòng chọn Quận/Huyện!');
+			return;
+		}
+		districtText = districtText.slice(1);
+
+		var wardText = $('#select2-Ward-container').text().trim();
+		if (wardText === 'Chọn Xã/Phường') {
+			alert('Vui lòng chọn Xã/Phường!');
+			return;
+		}
+		wardText = wardText.slice(1);
+
+		var address = $('input[name="addressDescription"]').val().trim();
+		if (!address) {
+			alert('Vui lòng nhập địa chỉ!');
+			return;
+		}
+
+		var imageList = [];
+
+		$('.images-preview img').each(function () {
+			var imgSrc = $(this).attr('src');
+			imageList.push(imgSrc); // Thêm src vào mảng
+		});
+
+		address = `${address}, ${wardText}, ${districtText}, ${provinceText}`;
+
+		userId = localStorage.getItem('iduser');
+		let time = new Date(deadline);
+		$.ajax({
+			url: 'http://localhost:8080/api/forms',
+			type: 'POST',
+			contentType: 'application/json',
+			data: JSON.stringify({
+				fullName: fullName,
+				phoneNumber: phoneNumber,
+				address: address,
+				target: target,
+				deadline: time,
+				images: imageList,
+				temp: true,
+				description: 'Hoàng cute quá',
+				userId: userId
+			}),
+			success: function (response) {
+				console.log(response);
+				alert('upload thành công!');
+				window.location.href = '/';
+			},
+			error: function (error) {
+				console.log(error);
+				alert('Có lỗi xảy ra khi đăng ký!');
+			}
+		});
 	});
 });
