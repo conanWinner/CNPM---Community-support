@@ -1397,11 +1397,11 @@
 													<div class="d-flex">
 														<p>
 															<!-- Target -->
-															<span class="wpcf7-form-control-wrap" data-name="email">
+															<span class="wpcf7-form-control-wrap" data-name="target">
 																<input size="40"
-																	class="wpcf7-form-control wpcf7-email wpcf7-text wpcf7-validates-as-email"
+																	class="wpcf7-form-control wpcf7-email wpcf7-text wpcf7-validates-as-target"
 																	aria-invalid="false" placeholder="Chỉ tiêu" value=""
-																	type="email" name="target" />
+																	type="number" name="target" />
 															</span>
 															<!-- Deadline -->
 															<span class="wpcf7-form-control-wrap"
@@ -1433,7 +1433,7 @@
 													</div>
 													<div class="d-flex">
 														<p>
-															<span class="wpcf7-form-control-wrap" data-name="hovaten">
+															<span class="wpcf7-form-control-wrap" data-name="address">
 																<input size="40" class="wpcf7-form-control wpcf7-text"
 																	aria-invalid="false"
 																	placeholder="Địa chỉ cụ thể, số nhà, đường ..."
@@ -1481,6 +1481,10 @@
 															gửi</label>
 														<input type="file" id="uploadImage" name="image"
 															accept="image/*" class="custom-file-input" multiple />
+														
+														<div class="images-preview" style="display:flex; justify-content: flex-start; align-items: flex-start">
+															
+														</div>
 													</div>
 													<style>
 														/* Hide the actual file input */
