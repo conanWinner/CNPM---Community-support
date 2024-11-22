@@ -10,6 +10,8 @@
 
 	<script src="./libs/jquery/jquery-3.6.0.min.js"></script>
 	<script type="module" src="./common/checkLogin.js"></script>
+	<script type="module" src="wp-content/form/form.js"></script>
+
 
 	<script>(function (html) { html.className = html.className.replace(/\bno-js\b/, 'js') })(document.documentElement);</script>
 	<meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
@@ -1523,23 +1525,26 @@
 														}
 													</style>
 
-
+													
+													<!-- Description -->
+													<p>
+														<span class="wpcf7-form-control-wrap" data-name="loinhan">
+															<textarea cols="40" rows="1000"
+																class="wpcf7-form-control wpcf7-textarea" aria-invalid="false"
+																placeholder="Lời nhắn" id="description" name="description"></textarea>
+														</span>
+														
+													</p>
+													<script>
+														CKEDITOR.replace("description")
+													</script>
+													<input class="wpcf7-form-control wpcf7-submit has-spinner" type="submit"
+													value="Gửi" />
 												</form>
+
+												
 											</div>
 
-											<!-- Description -->
-											<p>
-												<span class="wpcf7-form-control-wrap" data-name="loinhan">
-													<textarea cols="40" rows="1000"
-														class="wpcf7-form-control wpcf7-textarea" aria-invalid="false"
-														placeholder="Lời nhắn" name="description"></textarea>
-												</span>
-												<input class="wpcf7-form-control wpcf7-submit has-spinner" type="submit"
-													value="Gửi" />
-											</p>
-											<script>
-												CKEDITOR.replace("description")
-											</script>
 
 										</div>
 
@@ -2426,7 +2431,6 @@
 	</script>
 	<script type="text/javascript" src="wp-content/themes/flatsome/assets/js/flatsomef9b5.js?ver=039f9485eef603e7c53a"
 		id="flatsome-js-js"></script>
-	<script src="wp-content/form/form.js"></script>
 </body>
 
 <!-- Mirrored from caplayeuthuong.vn/lien-he/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 07 Oct 2024 11:28:56 GMT -->
