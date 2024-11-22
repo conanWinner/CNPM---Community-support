@@ -10,7 +10,7 @@
 
 	<script src="./libs/jquery/jquery-3.6.0.min.js"></script>
 	<script type="module" src="./common/checkLogin.js"></script>
-	<script type="module" src="wp-content/form/form.js"></script>
+	<script type="module" src="wp-content/contribution/contribution.js"></script>
 
 
 	<script>(function (html) { html.className = html.className.replace(/\bno-js\b/, 'js') })(document.documentElement);</script>
@@ -992,9 +992,9 @@
 								</li>
 
 								<li id="menu-item-24"
-									class="menu-item menu-item-type-post_type menu-item-object-page menu-item-24 menu-item-design-default">
-									<a href="contribution.html" aria-current="page" class="nav-top-link">Đóng góp</a>
-								</li>
+								class="menu-item menu-item-type-post_type menu-item-object-page menu-item-24 menu-item-design-default">
+								<a href="contribution.html" aria-current="page" class="nav-top-link">Đóng góp</a>
+							</li>
 							</ul>
 						</div>
 
@@ -1363,7 +1363,7 @@
 
 										</select> -->
 										<div id="lh2" class="frmplh">
-											<h3>Đăng ký Đại lá lành đồng hành cùng chương trình</h3>
+											<h3>Đăng thông tin đóng góp của bạn</h3>
 											<div class="wpcf7 no-js" id="wpcf7-f552-p18-o1" lang="vi" dir="ltr">
 												<div class="screen-reader-response">
 													<p role="status" aria-live="polite" aria-atomic="true"></p>
@@ -1381,33 +1381,14 @@
 														<input type="hidden" name="_wpcf7_container_post" value="18" />
 														<input type="hidden" name="_wpcf7_posted_data_hash" value="" />
 													</div>
-													<div class="d-flex">
-														<p>
-															<!-- Họ và tên -->
-															<span class="wpcf7-form-control-wrap" data-name="hovaten">
-																<input size="40" class="wpcf7-form-control wpcf7-text"
-																	aria-invalid="false" placeholder="Họ và tên"
-																	value="" type="text" name="fullName" />
-															</span>
-															<!-- Số điện thoại -->
-															<span class="wpcf7-form-control-wrap"
-																data-name="Phone_form1">
-																<input size="40"
-																	class="wpcf7-form-control wpcf7-tel wpcf7-validates-as-required wpcf7-text wpcf7-validates-as-tel"
-																	aria-required="true" aria-invalid="false"
-																	placeholder="Số điện thoại" value="" type="tel"
-																	name="phoneNumber" />
-															</span>
-														</p>
-													</div>
-
+													
 													<div class="d-flex">
 														<p>
 															<!-- Target -->
 															<span class="wpcf7-form-control-wrap" data-name="target">
 																<input size="40"
 																	class="wpcf7-form-control wpcf7-email wpcf7-text wpcf7-validates-as-target"
-																	aria-invalid="false" placeholder="Chỉ tiêu" value=""
+																	aria-invalid="false" placeholder="Số tiền đóng góp" value=""
 																	type="number" name="target" />
 															</span>
 															<!-- Deadline -->
@@ -1416,37 +1397,18 @@
 																<input
 																	class="wpcf7-form-control wpcf7-date wpcf7-validates-as-date"
 																	aria-invalid="false"
-																	placeholder="Thời gian liên lạc phù hợp" value=""
+																	placeholder="Thời gian đóng góp" value=""
 																	type="date" name="deadline" />
 															</span>
 														</p>
 													</div>
 
-													<!-- Address -->
 													<div
 														class="d-flex justify-content-between align-items-center flex-wrap">
 														<span class="wpcf7-form-control-wrap">
-															<label for="Province">Tỉnh/Thành Phố</label>
-															<select id="Province" class="form-control"></select>
+															<label for="form">Biểu mẫu</label>
+															<select id="form" class="form-control"></select>
 														</span>
-														<span class="wpcf7-form-control-wrap">
-															<label for="District">Quận/Huyện</label>
-															<select id="District" class="form-control"></select>
-														</span>
-														<span class="wpcf7-form-control-wrap">
-															<label for="Ward">Xã/Phường</label>
-															<select id="Ward" class="form-control"></select>
-														</span>
-													</div>
-													<div class="d-flex">
-														<p>
-															<span class="wpcf7-form-control-wrap" data-name="address">
-																<input size="40" class="wpcf7-form-control wpcf7-text"
-																	aria-invalid="false"
-																	placeholder="Địa chỉ cụ thể, số nhà, đường ..."
-																	value="" type="text" name="addressDescription" />
-															</span>
-														</p>
 													</div>
 
 													<style>
