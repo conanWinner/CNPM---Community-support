@@ -1,4 +1,9 @@
-import { uploadImage, provice_url, formAPI } from '../../common/common.js';
+import {
+  uploadImage,
+  contributionsAPI,
+  provice_url,
+  formAPI,
+} from "../../common/common.js";
 
 var province_list = [];
 
@@ -44,9 +49,9 @@ var getAllDataForDropdown = function () {
 };
 
 var getProviceData = function (callback) {
-	$.getJSON('http://localhost:8080/api/forms', function (list) {
-		callback(list);
-	});
+	$.getJSON(formAPI, function (list) {
+    callback(list);
+  });
 };
 
 var singleSelectDropdown = function (id, placeholder, data, selectItem) {
@@ -175,7 +180,7 @@ $(document).ready(function () {
 
 		let time = new Date(deadline);
 		$.ajax({
-			url: 'http://localhost:8080/api/contributions',
+			url: contributionsAPI,
 			type: 'POST',
 			contentType: 'application/json',
 			data: JSON.stringify({

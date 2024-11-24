@@ -170,8 +170,8 @@ $(document).ready(function () {
 		e.preventDefault();
 		const phoneNumber = $('#org-phone').val();
 		const password = $('#org-password').val();
-		const organizationName = $('#org-representation_name').val();
-		const representativeName = $('#org-name').val();
+		const representativeName = $("#org-representation_name").val();
+		const organizationName = $("#org-name").val();
 		const cccd = $('#org-cccd').val();
 		const address = $('#org-address').val();
 		const description = $('#org-description').val();
