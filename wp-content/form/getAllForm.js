@@ -1,4 +1,9 @@
-import { formAPI, URLchitietlachualanh } from "../../common/common.js";
+import {
+  formAPI,
+  URLchitietlachualanh,
+  URLDetailContribution,
+  getContributionsAPI,
+} from "../../common/common.js";
 
 $(document).ready(function () {
   // Gọi API để lấy dữ liệu
@@ -30,22 +35,31 @@ $(document).ready(function () {
           "</div>" +
           "<div>" +
           item.id +
-          "</div>" + 
+          "</div>" +
           "<div>" +
           item.fullName +
-          "</div>" + 
+          "</div>" +
           "<div>" +
           deadline +
-          "</div>" + 
+          "</div>" +
           "<div>" +
           item.address +
-          "</div>" + 
+          "</div>" +
           "<div>" +
           item.phoneNumber +
-          "</div>" + 
+          "</div>" +
           '<div style="color: rgb(252, 3, 53)">' +
           hasOrganization +
-          "</div>" + // Dữ liệu từ API
+          "</div>" +
+          "<div>" +
+          (item.organization != null
+            ? '<a style="text-decoration: underline;" href="' +
+              URLDetailContribution +
+              "?id=" +
+              item.id +
+              '">Xem các đóng góp</a>'
+            : "Chưa xem được đóng góp") +
+          "</div>" +
           '<div><a style="text-decoration: underline;" href="' +
           URLchitietlachualanh +
           "?id=" +

@@ -4,6 +4,7 @@ const URL = 'http://localhost:8090';
 // =================== URL front-end =======================
 export const URLIndex = './index.html';
 export const URLchitietlachualanh = './chitietlachualanh.html';
+export const URLDetailContribution = "./detail-contribution.html";
 
 // =============== USER ====================
 export const getUsers = URL + '/api/users'; // Get all users
@@ -28,3 +29,4 @@ export const ward_url = 'https://api.npoint.io/dd278dc276e65c68cdf5';
 
 // ================ Contributions =================
 export const contributionsAPI = URL + "/api/contributions";
+export const getContributionsAPI = URL + "/api/contributions/{formId}";
