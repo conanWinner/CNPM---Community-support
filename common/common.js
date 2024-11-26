@@ -23,6 +23,7 @@ export const login = URL + '/api/auth/login'; // Login
 export const uploadImage = URL + '/api/files/images'; // Upload image
 export const formAPI = URL + '/api/forms';
 export const confirmFormAPI = URL + "/api/forms/{formId}/organization/{organizationId}";
+export const getFormByOrganizationAPI = URL + "/api/forms/organization/{organizationId}";
 export const provice_url = 'https://api.npoint.io/ac646cb54b295b9555be';
 export const district_url = 'https://api.npoint.io/34608ea16bebc5cffd42';
 export const ward_url = 'https://api.npoint.io/dd278dc276e65c68cdf5';
@@ -30,3 +31,6 @@ export const ward_url = 'https://api.npoint.io/dd278dc276e65c68cdf5';
 // ================ Contributions =================
 export const contributionsAPI = URL + "/api/contributions";
 export const getContributionsAPI = URL + "/api/contributions/{formId}";
+
+//  ================== Spending ===================
+export const spendingAPI = URL + "/api/forms/spending/{formId}";

@@ -7,7 +7,7 @@ import {
 
 $(document).ready(function () {
   var urlParams = new URLSearchParams(window.location.search);
-  var idForm = urlParams.get("id");
+  var idForm = urlParams.get("idForm");
   var idOrganization = localStorage.getItem("iduser");
   var role_Name = localStorage.getItem('roleName')
 
@@ -28,6 +28,7 @@ var getFormData = function (idForm, role_Name) {
   var elementCaption = $(".wp-element-caption");
   var content = $(".entry-content");
   var account = $(".information_account");
+  var tennguoidang = $("#tennguoidang");
 
   // Gọi API để lấy dữ liệu
   $.ajax({
@@ -87,6 +88,7 @@ var getFormData = function (idForm, role_Name) {
       });
 
       elementCaption.text(data.fullName);
+      tennguoidang.text(data.user.name + " đã đăng hoàn cảnh này");
       content.html(data.description);
     },
     error: function (xhr, status, error) {

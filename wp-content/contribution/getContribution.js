@@ -5,7 +5,7 @@ import {
 
 $(document).ready(function(){
     var urlParams = new URLSearchParams(window.location.search);
-    var idForm = urlParams.get("id");
+    var idForm = urlParams.get("idForm");
     console.log("test")
     getContributeData(idForm, getContributionsAPI, URLchitietlachualanh);
 })
@@ -20,10 +20,19 @@ var getContributeData = function (idForm, getContributionsAPI) {
     success: function (response) {
       var rows = response.result;
       console.log(rows);
+      var totalAmount = 0
+      var isDone = rows[0].form.done;
 
+      if(isDone){
+        $("#showModalBtn").css("display", "none");
+        $("#xem-thong-tin-giai-ngan").css("display", "block");
+      }
+
+      console.log("dONE: ", isDone)
       rows.forEach(function (item, index){
         const date = new Date(item.date);
         
+
         // Lấy giờ, phút, giây
         const time = date.toLocaleTimeString("en-GB", {
           hour: "2-digit",
@@ -40,6 +49,9 @@ var getContributeData = function (idForm, getContributionsAPI) {
 
         // Kết hợp lại thành định dạng "hh:mm:ss dd/MM/yyyy"
         const formattedDateTime = time + " " + formattedDate;
+        var formattedAmount = item.amount.toLocaleString("vi-VN") + "đ"; // Định dạng số và thêm "đ"
+        totalAmount += item.amount
+
 
         var row =
           '<div class="qh_c">' +
@@ -50,7 +62,7 @@ var getContributeData = function (idForm, getContributionsAPI) {
           item.userResponse.fullName +
           "</div>" +
           "<div>" +
-          item.amount +
+          formattedAmount +
           "</div>" +
           "<div>" +
           formattedDateTime +
@@ -71,6 +83,10 @@ var getContributeData = function (idForm, getContributionsAPI) {
         // Thêm hàng mới vào phần tử có class .abody
         $(".abody").append(row);
       })
+
+       var formattedTotalAmount = totalAmount.toLocaleString("vi-VN") + "đ";
+       console.log(formattedTotalAmount)
+       $("#sotienthu").text("Đã thu: " + formattedTotalAmount);
 
     },
     error: function (error) {},
